@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">RPS_SORTS</string>
+    <string-array name="typesOfSort">
+        <item>Сортировка пузырьком</item>
+        <item>Сортировка вставкой</item>
+        <item>Сортировка слиянием</item>
+        <item>Быстрая сортировка</item>
+        <item>Все методы</item>
+        <item>Быстрая и слияние</item>
+    </string-array>
+    <string-array name="typesOfFilling">
+        <item>Отсортированный</item>
+        <item>Частично отсортированный</item>
+        <item>Заполнить случайно</item>
+    </string-array>
+</resources>
