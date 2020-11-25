@@ -98,11 +98,26 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="0.2" >
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:autoText="false"
+                android:text="TextView"
+                android:textAlignment="center" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="0.2">
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="none"
@@ -114,6 +129,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="none"
+                android:scrollHorizontally="false"
+                android:singleLine="false"
                 android:text="ПЕРЕСТАНОВКИ" />
 
             <TextView
@@ -141,7 +158,7 @@
 
             <TextView
                 android:id="@+id/textView30"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="none"
@@ -149,7 +166,7 @@
 
             <TextView
                 android:id="@+id/textView31"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="none"
@@ -172,7 +189,7 @@
 
             <TextView
                 android:id="@+id/textView33"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="none"
@@ -180,7 +197,7 @@
 
             <TextView
                 android:id="@+id/textView34"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="none"
@@ -203,7 +220,7 @@
 
             <TextView
                 android:id="@+id/textView36"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="none"
@@ -211,7 +228,7 @@
 
             <TextView
                 android:id="@+id/textView37"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="none"
@@ -234,7 +251,7 @@
 
             <TextView
                 android:id="@+id/textView39"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="none"
@@ -242,7 +259,7 @@
 
             <TextView
                 android:id="@+id/textView40"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="none"

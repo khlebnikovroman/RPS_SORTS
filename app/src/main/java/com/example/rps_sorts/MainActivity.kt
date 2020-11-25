@@ -255,15 +255,17 @@ class MainActivity : AppCompatActivity() {
         var i: Int
         var j: Int
         for (i in 1..lenght - 1) {
-            ts.compare_count++
+
             j = i
             while ((j > 0) && (data[j - 1] > data[j])) {
+                ts.compare_count++
                 temp = data[j - 1]
                 data[j - 1] = data[j]
                 data[j] = temp
                 ts.transposition_count++
                 j--
             }
+            ts.compare_count++
         }
         return ts
     }
@@ -274,15 +276,17 @@ class MainActivity : AppCompatActivity() {
         var i: Int
         var j: Int
         for (i in 1..lenght - 1) {
-            ts.compare_count++
+
             j = i
             while ((j > 0) && (data[j - 1] < data[j])) {
+                ts.compare_count++
                 temp = data[j - 1]
                 data[j - 1] = data[j]
                 data[j] = temp
                 ts.transposition_count++
                 j--
             }
+            ts.compare_count++
         }
         return ts
     }
@@ -301,6 +305,8 @@ class MainActivity : AppCompatActivity() {
 
         var a = data1.clone()
         val typeSort = spinner.selectedItemPosition
+        val count = data1.size
+        textView3.text= String.format("Количество элементов в массиве: %d",count)
         when (typeSort){
             0 -> {
                 a = data1.clone()

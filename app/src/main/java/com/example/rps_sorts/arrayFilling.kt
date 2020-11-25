@@ -9,11 +9,13 @@ import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_array_filling.*
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 
 open class arrayFilling : AppCompatActivity() {
+
+    public var data: MutableList<Double> = mutableListOf();
+
 
     fun addRow(c0: Int, c1: Double) {
         //Сначала найдем в разметке активити саму таблицу по идентификатору
@@ -38,7 +40,7 @@ open class arrayFilling : AppCompatActivity() {
     }
 
 
-    fun fillTable(data: Array<Double>, count: Int) {
+    fun fillTable(data: MutableList<Double>, count: Int) {
 
         table.removeAllViews()
 
@@ -56,9 +58,12 @@ open class arrayFilling : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_array_filling)
         val spnLocale = findViewById<View>(R.id.spinner2) as Spinner
+
+
 
         spnLocale.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View, i: Int, l: Long) {
@@ -92,23 +97,23 @@ open class arrayFilling : AppCompatActivity() {
         val random = Random()
         val count = editTextNumber3.text.toString().toInt()
         val typeFilling = spinner2.selectedItemPosition
+        data.clear()
         if (count < 3000) {
-            var data: Array<Double> = Array(count) { 0.0 }
             //addRow(i, random.nextInt(100).toDouble())
             when (typeFilling) {
                 0 -> {
-                    data[0] = random.nextInt(5) + 1.toDouble()
+                    data.add( random.nextInt(5) + 1.toDouble())
                     for (i in 1 until count) {
-                        data[i] = random.nextInt(10) + data[i - 1].toDouble()
+                        data.add(random.nextInt(10) + data[i - 1].toDouble())
 
                     }
                     fillTable(data, count)
                 }
 
                 1 -> {
-                    data[0] = random.nextInt(5) + 1.toDouble()
+                    data.add(random.nextInt(5) + 1.toDouble())
                     for (i in 1 until count) {
-                        data[i] = random.nextInt(10) + data[i - 1].toDouble()
+                        data.add( random.nextInt(10) + data[i - 1].toDouble())
                     }
                     var chaos = editTextNumber2.text.toString().toDouble()
                     var k: Int
@@ -126,27 +131,26 @@ open class arrayFilling : AppCompatActivity() {
 
                 2 -> {
                     for (i in 0 until count) {
-                        data[i] = random.nextInt(1000).toDouble()
+                        data.add(random.nextInt(1000).toDouble())
                     }
                     fillTable(data, count)
                 }
             }
         } else {
             table.visibility = View.INVISIBLE
-            var data: Array<Double> = Array(count) { 0.0 }
             //addRow(i, random.nextInt(100).toDouble())
             when (typeFilling) {
                 0 -> {
-                    data[0] = random.nextInt(5) + 1.toDouble()
+                    data.add(random.nextInt(5) + 1.toDouble())
                     for (i in 1 until count) {
-                        data[i] = random.nextInt(10) + data[i - 1].toDouble()
+                        data.add(random.nextInt(10) + data[i - 1].toDouble())
                     }
                 }
 
                 1 -> {
-                    data[0] = random.nextInt(5) + 1.toDouble()
+                    data.add(random.nextInt(5) + 1.toDouble())
                     for (i in 1 until count) {
-                        data[i] = random.nextInt(10) + data[i - 1].toDouble()
+                        data.add(random.nextInt(10) + data[i - 1].toDouble())
                     }
                     var chaos = editTextNumber2.text.toString().toDouble()
                     var k: Int
@@ -163,7 +167,7 @@ open class arrayFilling : AppCompatActivity() {
 
                 2 -> {
                     for (i in 0 until count) {
-                        data[i] = random.nextInt(1000).toDouble()
+                        data.add(random.nextInt(1000).toDouble())
                     }
                 }
             }
@@ -172,16 +176,24 @@ open class arrayFilling : AppCompatActivity() {
 
     override fun onBackPressed() {
         var arrayFillingIntent =  Intent()
-        var count=table.childCount
-        var data:DoubleArray=DoubleArray(count)
+        var count = editTextNumber3.text.toString().toInt()
+
         val b = Bundle()
+        if (count < 3000) {
+            data.clear()
+            for (i in 0 until count) {
+                var row = table.getChildAt(i) as TableRow
+                var digit = row.getChildAt(1) as EditText
+                data.add(digit.text.toString().toDouble())
+            }
+        }
+        var numbers = DoubleArray(count){0.0}
+
         for (i in 0 until count){
-            var row = table.getChildAt(i) as TableRow
-            var digit = row.getChildAt(1) as EditText
-            data[i]= digit.text.toString().toDouble()
+            numbers[i]=data[i]
         }
 
-        b.putDoubleArray("DIGITS",data)
+        b.putDoubleArray("DIGITS",numbers)
         arrayFillingIntent.putExtras(b)
         setResult(RESULT_OK, arrayFillingIntent)
         finish()
